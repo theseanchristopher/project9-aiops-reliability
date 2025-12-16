@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ClusterAnalysisTemplate
+metadata:
+  name: project9-restart-rollback-freeze-prod
+spec:
+  args:
+    - name: namespace
+      value: project8-prod
+    - name: window
+      value: 2m
+    - name: threshold
+      value: "0"
+
+  metrics:
+    - name: restart-spike
+      interval: 30s
+      count: 8                 # prod-safe: longer confirmation window
+      failureLimit: 0
+      consecutiveErrorLimit: 1
+      provider:
+        prometheus:
+          address: http://kube-prometheus-stack-prometheus.monitoring.svc:9090
+          query: |
+            sum(
+              increase(
+                kube_pod_container_status_restarts_total{namespace="{{args.namespace}}"}[{{args.window}}]
+              )
+            )
+      successCondition: result[0] <= {{args.threshold}}
+      failureCondition: result[0] > {{args.threshold}}
+
