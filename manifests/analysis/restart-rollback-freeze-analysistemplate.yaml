@@ -4,6 +4,13 @@ metadata:
   name: project9-restart-rollback-freeze
   namespace: project8-dev
 spec:
+  args:
+    - name: namespace
+      value: project8-dev
+    - name: window
+      value: 2m
+    - name: threshold
+      value: "0"
   metrics:
     - name: restart-spike
       interval: 30s
@@ -16,11 +23,11 @@ spec:
           query: |
             sum(
               increase(
-                kube_pod_container_status_restarts_total{namespace="project8-dev"}[2m]
+                kube_pod_container_status_restarts_total{namespace="{{args.namespace}}"}[{{args.window}}]
               )
             )
-      # Success: 0 restarts in the window
-      successCondition: result[0] == 0
-      # Failure: >= 1 restart in the window
-      failureCondition: result[0] >= 1
+      # Success: <= 0 restarts in the window
+      successCondition: result[0] <= {{args.threshold}}
+      # Failure: > 0 restart in the window
+      failureCondition: result[0] > {{args.threshold}}
 
