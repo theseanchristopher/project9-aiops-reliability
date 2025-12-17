@@ -10,6 +10,8 @@ spec:
       value: 2m
     - name: threshold
       value: "0"
+    - name: notReadyThreshold
+      value: "0"
 
   metrics:
     - name: restart-spike
@@ -28,4 +30,23 @@ spec:
             )
       successCondition: result[0] <= {{args.threshold}}
       failureCondition: result[0] > {{args.threshold}}
+
+    - name: not-ready-pods
+      interval: 30s
+      count: 3
+      failureLimit: 0
+      consecutiveErrorLimit: 1
+      provider:
+        prometheus:
+          address: http://kube-prometheus-stack-prometheus.monitoring.svc:9090
+          query: |
+            sum(
+              kube_pod_status_ready{
+                condition="false",
+                namespace="{{args.namespace}}"
+              }
+            )
+            or vector(0)
+      successCondition: result[0] == {{args.notReadyThreshold}}
+      failureCondition: result[0] > {{args.notReadyThreshold}}
 
