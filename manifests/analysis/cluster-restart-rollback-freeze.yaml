@@ -10,8 +10,6 @@ spec:
       value: 2m
     - name: threshold
       value: "0"
-    - name: notReadyThreshold
-      value: "0"
 
   metrics:
     - name: restart-spike
@@ -47,6 +45,25 @@ spec:
               }
             )
             or vector(0)
-      successCondition: result[0] == {{args.notReadyThreshold}}
-      failureCondition: result[0] > {{args.notReadyThreshold}}
+      successCondition: result[0] == 0
+      failureCondition: result[0] > 0
+
+    - name: no-latest-image
+      interval: 30s
+      count: 1
+      failureLimit: 0
+      consecutiveErrorLimit: 1
+      provider:
+        prometheus:
+          address: http://kube-prometheus-stack-prometheus.monitoring.svc:9090
+          query: |
+            sum(
+              kube_pod_container_info{
+                namespace="{{args.namespace}}",
+                image=~".*:latest$"
+              }
+            )
+            or vector(0)
+      successCondition: result[0] == 0
+      failureCondition: result[0] > 0
 
