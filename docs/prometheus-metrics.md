@@ -1,3 +1,5 @@
+This project intentionally relies only on platform-level metrics rather than application-level instrumentation.
+
 # Prometheus Metrics
 
 This document explains the **PromQL** used for each guardrail and why each query is structured the way it is.

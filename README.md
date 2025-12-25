@@ -1,3 +1,5 @@
+This project implements a cluster-scoped reliability guardrails platform for Kubernetes progressive delivery, managed entirely via GitOps.
+
 # Project 9 — Fail‑Closed Reliability Guardrails (Argo Rollouts + Prometheus + GitOps)
 
 Project 9 implements **fail‑closed reliability guardrails** for Kubernetes progressive delivery using **Argo Rollouts Analysis** and **Prometheus**.  

@@ -1,3 +1,5 @@
+This project introduces a cluster-scoped reliability policy layer that is independent of any single application.
+
 # Architecture
 
 ## 1. Overview

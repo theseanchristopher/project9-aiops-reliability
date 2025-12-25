@@ -1,3 +1,5 @@
+In all cases, the platform failed closed as designed, surfacing configuration errors rather than masking them.
+
 # Failure & Rollback Behavior
 
 This project is explicitly about **how rollouts should behave under failure** and **why**.

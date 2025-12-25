@@ -1,3 +1,5 @@
+This project assumes an existing Kubernetes cluster with Prometheus and kube-state-metrics installed (as provided in Project 7).
+
 # Installation
 
 ## 1. Prerequisites

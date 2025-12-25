@@ -1,3 +1,5 @@
+These templates intentionally fail closed to prioritize safety, immutability, and traceability.
+
 # Analysis Templates
 
 This document explains the **ClusterAnalysisTemplates** provided by Project 9, including the reasoning behind each field.
