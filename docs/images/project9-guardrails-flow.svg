@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="260" viewBox="0 0 980 260">
+  <rect x="20" y="40" width="220" height="70" rx="14" ry="14" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+  <text x="130" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#111111">Rollout Step</text>
+  <text x="130" y="92" text-anchor="middle" font-family="Arial" font-size="12" fill="#111111">(analysis)</text>
+
+  <line x1="240" y1="75" x2="320" y2="75" stroke="#111111" stroke-width="2"/>
+  <polygon points="320,75 310,69 310,81" fill="#111111"/>
+
+  <rect x="320" y="40" width="220" height="70" rx="14" ry="14" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+  <text x="430" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#111111">AnalysisRun</text>
+  <text x="430" y="92" text-anchor="middle" font-family="Arial" font-size="12" fill="#111111">restart + readiness + image</text>
+
+  <line x1="540" y1="75" x2="620" y2="75" stroke="#111111" stroke-width="2"/>
+  <polygon points="620,75 610,69 610,81" fill="#111111"/>
+
+  <rect x="620" y="40" width="220" height="70" rx="14" ry="14" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+  <text x="730" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#111111">Prometheus</text>
+  <text x="730" y="92" text-anchor="middle" font-family="Arial" font-size="12" fill="#111111">kube-state-metrics</text>
+
+  <line x1="430" y1="110" x2="430" y2="170" stroke="#111111" stroke-width="2"/>
+  <polygon points="430,170 424,160 436,160" fill="#111111"/>
+
+  <rect x="250" y="170" width="360" height="70" rx="14" ry="14" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+  <text x="430" y="200" text-anchor="middle" font-family="Arial" font-size="16" fill="#111111">Decision</text>
+  <text x="430" y="222" text-anchor="middle" font-family="Arial" font-size="12" fill="#111111">Fail-closed: block unless safe</text>
+
+  <line x1="610" y1="205" x2="900" y2="205" stroke="#111111" stroke-width="2"/>
+  <polygon points="900,205 890,199 890,211" fill="#111111"/>
+
+  <rect x="900" y="170" width="60" height="70" rx="14" ry="14" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+  <text x="930" y="200" text-anchor="middle" font-family="Arial" font-size="14" fill="#111111">Gate</text>
+  <text x="930" y="222" text-anchor="middle" font-family="Arial" font-size="12" fill="#111111">Pass/Fail</text>
+</svg>
